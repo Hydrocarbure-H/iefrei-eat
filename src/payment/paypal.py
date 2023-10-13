@@ -7,7 +7,6 @@ import src.constants as CONST
 class PayPal:
 
     def __init__(self):
-
         self.access_token = None
 
     def authenticate(self):
@@ -39,7 +38,7 @@ class PayPal:
 
         self.access_token = response.json()["access_token"]
 
-    def create_order(self, payer, amount):
+    def order(self, payer, amount):
         """
         Create an order with PayPal
         :param amount:
