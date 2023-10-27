@@ -57,14 +57,33 @@ $(document).ready(function() {
                 'drink': $('#drink').val(),
                 'no_form_product': $('#no_form_product').val()
             }
+
+            data = JSON.stringify(data);
         }
 
         // Store email in localstorage
         localStorage.setItem("email", $('#email').val())
         // Send the data to the server
-        // TODO
-        console.log(data);
-
+        $.ajax({
+            url: '/order',
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data,
+            success: function(response) {
+                console.log(response);
+                if (response === 'OK')
+                {
+                    window.location.replace('/success');
+                }
+                else
+                {
+                    error.text('Une erreur est survenue');
+                    error.show();
+                }
+            }
+        });
     });
 });
 

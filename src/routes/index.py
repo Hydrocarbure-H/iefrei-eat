@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 # The route name that we will use in app.py
 route = Blueprint('index', __name__)
@@ -14,6 +14,26 @@ def helloworld():
     return render_template("index.html")
 
 
+@route.route('/success', methods=['GET'])
+def success():
+    """
+    Say hello to the world
+    :return:
+    """
+    # Render index.html page
+    return render_template("success.html")
+
+
 @route.route('/order', methods=["POST"])
 def create_order():
-    pass
+    """
+    Create an order
+    :return:
+    """
+    # Get data
+    data = request.get_json()
+
+    # Get the payer
+    payer = data["email"]
+    print("Payer: " + payer)
+    return "OK", 200
