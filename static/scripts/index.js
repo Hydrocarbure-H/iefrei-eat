@@ -72,7 +72,6 @@ $(document).ready(function() {
             },
             data: data,
             success: function(response) {
-                console.log(response);
                 if (response === 'OK')
                 {
                     window.location.replace('/success');
@@ -82,6 +81,10 @@ $(document).ready(function() {
                     error.text('Une erreur est survenue');
                     error.show();
                 }
+            },
+            error: function(error) {
+                error.text('Une erreur est survenue');
+                error.show();
             }
         });
     });
