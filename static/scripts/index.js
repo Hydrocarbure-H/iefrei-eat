@@ -1,8 +1,11 @@
 // Jquery to grab the document ready
 
 $(document).ready(function() {
-
     const validate = $('#validate');
+    // if (localStorage.getItem("email") != null)
+    // {
+    //     $('#email').val(localStorage.getItem("email"));
+    // }
     const error = $('#error');
 
     error.hide();
@@ -56,6 +59,8 @@ $(document).ready(function() {
             }
         }
 
+        // Store email in localstorage
+        localStorage.setItem("email", $('#email').val())
         // Send the data to the server
         // TODO
         console.log(data);

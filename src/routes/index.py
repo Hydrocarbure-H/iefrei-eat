@@ -12,3 +12,8 @@ def helloworld():
     """
     # Render index.html page
     return render_template("index.html")
+
+
+@route.route('/order', methods=["POST"])
+def create_order():
+    pass
