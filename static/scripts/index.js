@@ -72,8 +72,12 @@ function checkEmail(email) {
     // Regex to check the email
     if (email === '')
         return false;
+    if (!email.includes('.'))
+        return false;
+    if (!email.includes('@efrei.net'))
+        return false;
     let regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-    return regex.test(email) === email.includes('@efrei.net');
+    return regex.test(email);
 }
 
 /**
