@@ -1,5 +1,12 @@
 // Jquery to grab the document ready
+
 $(document).ready(function() {
+
+    const validate = $('#validate');
+    const error = $('#error');
+
+    error.hide();
+
     order_type = $('#order_type')
     // Check the order_type value
     if (order_type.val() === 'no_form') {
@@ -23,26 +30,36 @@ $(document).ready(function() {
         }
     });
 
-    let validate = $('#validate');
-    let error = $('#error');
     validate.on('click', function() {
         // Check all fields
-        if ($('#order_type').val() === 'no_form') {
-            if (!checkEmail($('#email').val()) || $('#no_form_product').val())
-            {
-                error.text('Veuillez remplir tous les champs');
-                error.show();
-                return false;
+        if (!validate_f())
+            return;
+        let data= {};
+        if (order_type.val() === 'no_form') {
+            // Get the data
+            data = {
+                'email': $('#email').val(),
+                'order_type': order_type.val(),
+                'no_form_product': $('#no_form_product').val()
             }
         }
-        else {
-            if (!checkEmail($('#email').val()) || $('#principal').val() === null || $('#secondary').val() === null || $('#drink').val() === null)
-            {
-                error.text('Veuillez remplir tous les champs');
-                error.show();
-                return false;
+        else
+        {
+            // Get the data
+            data = {
+                'email': $('#email').val(),
+                'order_type': order_type.val(),
+                'principal': $('#principal').val(),
+                'secondary': $('#secondary').val(),
+                'drink': $('#drink').val(),
+                'no_form_product': $('#no_form_product').val()
             }
         }
+
+        // Send the data to the server
+        // TODO
+        console.log(data);
+
     });
 });
 
@@ -53,6 +70,48 @@ $(document).ready(function() {
  */
 function checkEmail(email) {
     // Regex to check the email
+    if (email === '')
+        return false;
     let regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
     return regex.test(email) === email.includes('@efrei.net');
+}
+
+/**
+ * Check all the fields
+ * @returns {boolean}
+ */
+function validate_f()
+{
+    const error = $('#error');
+
+    if ($('#order_type').val() === 'no_form') {
+        if (!checkEmail($('#email').val()))
+        {
+            error.text('Votre email n\'est pas valide');
+            error.show();
+            return false;
+        }
+        else if($('#no_form_product').val() === null)
+        {
+            error.text('Veuillez remplir tous les champs');
+            error.show();
+            return false;
+        }
+    }
+    else
+    {
+        if (!checkEmail($('#email').val()))
+        {
+            error.text('Votre email n\'est pas valide');
+            error.show();
+            return false;
+        }
+        else if ($('#principal').val() === null || $('#secondary').val() === null || $('#drink').val() === null)
+        {
+            error.text('Veuillez remplir tous les champs');
+            error.show();
+            return false;
+        }
+    }
+    return true;
 }

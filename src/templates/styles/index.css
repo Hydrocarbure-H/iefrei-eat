@@ -59,6 +59,12 @@ body{
     text-align: left;
 }
 
+.content .form .error
+{
+    color: #a02432;
+    transition: all 0.3s ease-in-out;
+}
+
 .content .form
 {
     display: block;
