@@ -1,0 +1,156 @@
+body{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/*Header on the top*/
+.header
+{
+    color: #FFFCFF;
+    height: fit-content;
+    width: 100vw;
+    display: block;
+    margin: 10px auto;
+    padding: 0;
+    text-align: center;
+}
+
+.header h1
+{
+    color: #247BA0;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.header h2
+{
+    color: #dcdcdc;
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 10px;
+}
+
+.container
+{
+    background-color: #FFFCFF;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    display: table;
+    height: calc(100vh - 200px);
+}
+
+.content {
+    color: #247BA0;
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+    height: 10%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.content h2
+{
+    text-align: left;
+}
+
+.content .form .error
+{
+    color: #a02432;
+    transition: all 0.3s ease-in-out;
+}
+
+.content .form
+{
+    display: block;
+}
+
+.content .form input
+{
+    font-size: 1.30rem;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: #dcdcdc;
+    color: #247BA0;
+    border-bottom: 1px solid #247BA0;
+    box-shadow: 0 1px 0 0 #247BA0;
+    transition: all 0.3s ease-in-out;
+}
+.content .form input:focus
+{
+    outline: none;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #FFFCFF;
+    box-shadow: 0 1px 0 0 #FFFCFF;
+}
+
+.content .form select
+{
+    font-size: 1.30rem;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    box-sizing: border-box;
+    background-color: #dcdcdc;
+    color: #247BA0;
+    border-bottom: 1px solid #247BA0;
+    box-shadow: 0 1px 0 0 #247BA0;
+    transition: all 0.3s ease-in-out;
+}
+
+.content .form select:focus
+{
+    outline: none;
+    border-bottom: 1px solid #dcdcdc;
+    background-color: #FFFCFF;
+    box-shadow: 0 1px 0 0 #FFFCFF;
+}
+
+.content .validate button
+{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #FFFCFF;
+    background-color: #247BA0;
+    border: 1px solid #FFFCFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+.content .validate button:hover
+{
+    background-color: #FFFCFF;
+    color: #247BA0;
+    border: 1px solid #247BA0;
+    cursor: pointer;
+}
+
+.content .validate button:focus
+{
+    background-color: #FFFCFF;
+    color: #247BA0;
+    border: 1px solid #247BA0;
+}
+
+
+@media screen and (max-width: 768px)
+{
+    .container
+    {
+        width: 100%;
+    }
+}

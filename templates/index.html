@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="../static/scripts/index.js"></script>
+<div class="header">
+    <h1>iEfrei.fr - Eat</h1>
+    <h2>N'attendez plus à la boulangerie !</h2>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="form">
+            <div class="error">
+                <h2 id="error" class="error"></h2>
+            </div>
+            <input required type="text" id="email" placeholder="Adresse email @efrei.net">
+            <h2>Type de Formule</h2>
+            <select required id="order_type">
+                <option value="no_form">Sans formule - x€/Unit.</option>
+                <option selected="selected" value="with_form">Formule complète - 9€</option>
+            </select>
+            <div id="no_form">
+                <h2>Quel produit souhaitez-vous ?</h2>
+                <select required id="no_form_product">
+                    <option value="1">Sandwich Poulet - 5.50€</option>
+                    <option value="2">Sandwich Thon - 5.50€</option>
+                    <option value="3">Fougasse Chèvre - 5.50€</option>
+                    <option value="3">Pizza Thon - 4.20€</option>
+                    <option value="3">Pizza Chèvre - 4.20€</option>
+                    <option value="1">Pain aux raisins - 1.70€</option>
+                    <option value="2">Muffin - 2.30€</option>
+                    <option value="2">Part de flan - 3.10€</option>
+                    <option value="3">Pain au chocolat - 1.20€</option>
+                    <option value="3">Pain Suisse - 1.80€</option>
+                    <option value="3">Croissant - 1.20€</option>
+                    <option value="3">Croissant aux amandes - 2.30€</option>
+                    <option value="1">Coca-Cola - 1.60€</option>
+                    <option value="1">Coca-Cola Zero - 1.60€</option>
+                    <option value="2">Fanta - 1.60€</option>
+                    <option value="2">Orangina - 1.60€</option>
+                    <option value="3">Sprite - 1.60€</option>
+                    <option value="3">Ice Tea - 1.60€</option>
+                    <option value="3">Schwepps - 1.60€</option>
+                    <option value="3">Oasis Pomme Cassis - 1.60€</option>
+                </select>
+            </div>
+            <div id="with_form">
+                <h2>Plat</h2>
+                <select required id="principal">
+                    <option value="1">Sandwich Poulet</option>
+                    <option value="2">Sandwich Thon</option>
+                    <option value="3">Fougasse Chèvre</option>
+                    <option value="3">Pizza Thon</option>
+                    <option value="3">Pizza Chèvre</option>
+                </select>
+                <h2>Dessert</h2>
+                <select required id="secondary">
+                    <option value="1">Pain aux raisins</option>
+                    <option value="2">Muffin</option>
+                    <option value="3">Pain au chocolat</option>
+                    <option value="3">Pain Suisse</option>
+                    <option value="3">Croissant</option>
+                    <option value="3">Croissant aux amandes</option>
+                    <option value="3">Part de Flan</option>
+                </select>
+                <h2>Boisson</h2>
+                <select required id="drink">
+                    <option value="1">Coca-Cola</option>
+                    <option value="1">Coca-Cola Zero</option>
+                    <option value="2">Fanta</option>
+                    <option value="2">Orangina</option>
+                    <option value="3">Sprite</option>
+                    <option value="3">Ice Tea</option>
+                    <option value="3">Schwepps</option>
+                    <option value="3">Oasis Pomme Cassis</option>
+                </select>
+            </div>
+        </div>
+        <div class="validate">
+            <button id="validate">Valider</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
