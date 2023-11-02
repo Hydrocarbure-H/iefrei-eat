@@ -90,7 +90,8 @@ $(document).ready(function() {
                 }
             },
             error: function(error) {
-                error_field.innerHTML = 'Une erreur est survenue : <code>' + error.responseText + '</code>';
+                console.log(error);
+                error_field.text('Une erreur est survenue : ' + error.responseText);
                 error_field.show();
             }
         });

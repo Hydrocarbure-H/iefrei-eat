@@ -47,27 +47,26 @@ def create_order():
     # Get data
     data = request.get_json()
 
-    print(data, flush=True)
-
     # Create payer
-    print("Creating payer...", end="")
+    print("Creating payer...", end="", flush=True)
     try:
         payer = Payer(data["email"])
     except Exception as e:
-        print("Failed")
+        print("Failed", flush=True)
         return str(e), 400
-    print("OK")
+    print("OK", flush=True)
 
     # Create order
     payer.set_order(data["order"])
 
     # Write to database
-    print("Writing to database...", end="")
+    print("Writing to database...", end="", flush=True)
     try:
         payer.write_to_db()
     except Exception as e:
-        print("Failed")
-        print(e)
+        print("Failed", flush=True)
+        print(e, flush=True)
         return str(e), 400
-    print("OK")
+
+    print("OK", flush=True)
     return "OK", 200

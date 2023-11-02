@@ -32,6 +32,11 @@ class Payer:
         except IndexError:
             last_order_id = 0
 
+        # Check if the payer already has an order
+        for order in orders:
+            if order["email"] == self.email:
+                raise Exception("You already have an order")
+
         # Create the order object
         order_o = {
             "id": last_order_id + 1,
