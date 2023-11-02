@@ -42,9 +42,13 @@ $(document).ready(function() {
             // Get the data
             data = {
                 'email': $('#email').val(),
-                'order_type': order_type.val(),
-                'no_form_product': $('#no_form_product').val()
+                'order':
+                    {
+                        'order_type': order_type.val(),
+                        'no_form_product': $('#no_form_product').val()
+                    }
             }
+            data = JSON.stringify(data);
         }
         else
         {
@@ -56,8 +60,7 @@ $(document).ready(function() {
                         'order_type': order_type.val(),
                         'principal': $('#principal').val(),
                         'secondary': $('#secondary').val(),
-                        'drink': $('#drink').val(),
-                        'no_form_product': $('#no_form_product').val()
+                        'drink': $('#drink').val()
                     }
             }
 
@@ -66,6 +69,7 @@ $(document).ready(function() {
 
         // Store email in localstorage
         localStorage.setItem("email", $('#email').val())
+
         // Send the data to the server
         $.ajax({
             url: '/order',
@@ -77,7 +81,7 @@ $(document).ready(function() {
             success: function(response) {
                 if (response === 'OK')
                 {
-                    window.location.replace('/success');
+                    window.location.replace('/success?email=' + $('#email').val());
                 }
                 else
                 {

@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Succès</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success ! | iEfrei.fr - Eat</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/success.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-C'est ok !
+<script type="text/javascript" src="../static/scripts/index.js"></script>
+<div class="header">
+    <h1>iEfrei.fr - Eat</h1>
+    <h2>N'attendez plus à la boulangerie !</h2>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="order">
+<!--        if order_type is with_form -->
+        {% if order.order.order_type == "with_form":%}
+        <h2>Commande n°<code>{{ order.id }}</code></h2>
+        <h2>Adresse email : <code>{{ order.email }}</code></h2>
+        <h2>Formule : Formule complète (10€)</h2>
+        <h2>Plat : {{ order.order.principal }}</h2>
+        <h2>Boisson : {{ order.order.drink }}</h2>
+        <h2>Dessert : {{ order.order.secondary }}</h2>
+
+<!--        if order_type is no_form -->
+        {% elif order.order.order_type == "no_form":%}
+            <h2>Commande n°<code>{{ order.id }}</code></h2>
+            <h2>Adresse email : <code>{{ order.email }}</code></h2>
+        <h2>Formule : Produit à l'unité</h2>
+        <h2>Produit : {{ order.order.no_form_product }}</h2>
+        {% endif %}
+        <p>Le paiement se fera à la réception de la commande, par CB via l'API de Paypal.</p>
+        </div>
+    </div>
+</div>
 </body>
-</html>

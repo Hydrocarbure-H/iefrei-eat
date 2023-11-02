@@ -28,9 +28,10 @@ class Payer:
 
         # Get the last order id
         try:
-            last_order_id = orders[-1]["order"]["id"]
+            last_order_id = orders[-1]["id"]
         except IndexError:
             last_order_id = 0
+
         # Create the order object
         order_o = {
             "id": last_order_id + 1,
@@ -50,3 +51,22 @@ class Payer:
 
     def __str__(self):
         return f"Payer: {self.email}, Order: {str(self.order)}"
+
+    def get_order(self):
+        """
+        Get the order from the database
+        :return:
+        """
+        # Read the database (db.json xD)
+        try:
+            with open("db.json", "r") as f:
+                orders = json.load(f)["orders"]
+        except Exception as e:
+            raise Exception("Failed to read the database: " + str(e))
+
+        # Get the order
+        for order in orders:
+            if order["email"] == self.email:
+                return order
+
+        raise Exception("No order found for this email address")
