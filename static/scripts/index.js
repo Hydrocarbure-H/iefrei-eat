@@ -6,9 +6,9 @@ $(document).ready(function() {
     // {
     //     $('#email').val(localStorage.getItem("email"));
     // }
-    const error = $('#error');
+    const error_field = $('#error');
 
-    error.hide();
+    error_field.hide();
 
     order_type = $('#order_type')
     // Check the order_type value
@@ -51,11 +51,14 @@ $(document).ready(function() {
             // Get the data
             data = {
                 'email': $('#email').val(),
-                'order_type': order_type.val(),
-                'principal': $('#principal').val(),
-                'secondary': $('#secondary').val(),
-                'drink': $('#drink').val(),
-                'no_form_product': $('#no_form_product').val()
+                'order':
+                    {
+                        'order_type': order_type.val(),
+                        'principal': $('#principal').val(),
+                        'secondary': $('#secondary').val(),
+                        'drink': $('#drink').val(),
+                        'no_form_product': $('#no_form_product').val()
+                    }
             }
 
             data = JSON.stringify(data);
@@ -78,13 +81,13 @@ $(document).ready(function() {
                 }
                 else
                 {
-                    error.text('Une erreur est survenue');
-                    error.show();
+                    error_field.text('Une erreur est survenue');
+                    error_field.show();
                 }
             },
             error: function(error) {
-                error.text('Une erreur est survenue');
-                error.show();
+                error_field.innerHTML = 'Une erreur est survenue : <code>' + error.responseText + '</code>';
+                error_field.show();
             }
         });
     });
