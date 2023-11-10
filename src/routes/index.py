@@ -94,6 +94,7 @@ def admin_display():
         "drinks": [],
         "products": []
     }
+
     for order in data["orders"]:
         print(order)
         if order["order"]["order_type"] == "with_form":
@@ -103,6 +104,10 @@ def admin_display():
         elif order["order"]["order_type"] == "no_form":
             summary["products"].append(order["order"]["no_form_product"])
 
-    print(summary)
+    # Number of with_form orders
+    summary["with_form"] = len(summary["principals"])
+
+    # Number of no_form orders
+    summary["no_form"] = len(summary["products"])
 
     return render_template("admin.html", data=data["orders"], summary=summary)

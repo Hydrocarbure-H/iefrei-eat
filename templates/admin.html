@@ -22,21 +22,28 @@
             <h2>Failed to fetch the summary.</h2>
         {% else: %}
             <div class="summary">
-    <!--            <h2>Nombre de commandes : <code>{{ summary.orders }}</code></h2>-->
-    <!--            <h2>Nombre de commandes avec formule : <code>{{ summary.with_form }}</code></h2>-->
-    <!--            <h2>Nombre de commandes sans formule : <code>{{ summary.no_form }}</code></h2>-->
+                <h2>Nombre de commandes avec formule : <code>{{ summary.with_form }}</code></h2>
+                <h2>Nombre de commandes sans formule : <code>{{ summary.no_form }}</code></h2>
+                <p>
                 {% for p in summary.principals %}
-                    <h2> {{p}} </h2>
+                    <span> {{p}} </span>
                 {% endfor %}
+                </p>
+                <p>
                 {% for d in summary.drinks %}
-                    <h2> {{d}} </h2>
+                    <span> {{d}} </span>
                 {% endfor %}
+                </p>
+                <p>
                 {% for s in summary.secondarys %}
-                    <h2> {{s}} </h2>
+                    <span> {{s}} </span>
                 {% endfor %}
+                </p>
+                <p>
                 {% for n in summary.products %}
-                    <h2> {{n}} </h2>
+                    <span> {{n}} </span>
                 {% endfor %}
+                </p>
             </div>
         {% endif %}
 
