@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../static/assets/favicon.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List orders | iEfrei.fr - Eat</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/success.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="../static/scripts/index.js"></script>
+<div class="header">
+    <h1>iEfrei.fr - Crounch</h1>
+    <h2>N'attendez plus à la boulangerie !</h2>
+</div>
+<div class="container">
+    <div class="content">
+<!--            display summary -->
+        {% if summary == None:%}
+            <h2>Failed to fetch the summary.</h2>
+        {% else: %}
+            <div class="summary">
+    <!--            <h2>Nombre de commandes : <code>{{ summary.orders }}</code></h2>-->
+    <!--            <h2>Nombre de commandes avec formule : <code>{{ summary.with_form }}</code></h2>-->
+    <!--            <h2>Nombre de commandes sans formule : <code>{{ summary.no_form }}</code></h2>-->
+                {% for p in summary.principals %}
+                    <h2> {{p}} </h2>
+                {% endfor %}
+                {% for d in summary.drinks %}
+                    <h2> {{d}} </h2>
+                {% endfor %}
+                {% for s in summary.secondarys %}
+                    <h2> {{s}} </h2>
+                {% endfor %}
+                {% for n in summary.products %}
+                    <h2> {{n}} </h2>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if data == None:%}
+            <h2>Failed to fetch the commands list.</h2>
+        {% else %}
+            {% for order in data %}
+                {% if order.order.order_type == "with_form":%}
+                    <div class="order">
+                        <h2>Commande n°<code>{{ order.id }}</code></h2>
+                        <h2>Adresse email : <code>{{ order.email }}</code></h2>
+                        <h2>Formule : Formule complète (10€)</h2>
+                        <h2>Plat : {{ order.order.principal }}</h2>
+                        <h2>Boisson : {{ order.order.drink }}</h2>
+                        <h2>Dessert : {{ order.order.secondary }}</h2>
+                    </div>
+                {% elif order.order.order_type == "no_form":%}
+                    <div class="order">
+                        <h2>Commande n°<code>{{ order.id }}</code></h2>
+                        <h2>Adresse email : <code>{{ order.email }}</code></h2>
+                        <h2>Formule : Produit à l'unité</h2>
+                        <h2>Produit : {{ order.order.no_form_product }}</h2>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+</body>

@@ -1,6 +1,8 @@
+import json
+
 from flask import request, jsonify
 
-from src.strings import API
+from src.utils.strings import API
 
 
 def server_error(message, will_exit=False):
@@ -44,3 +46,16 @@ def response(response_value, content, code=API.SUCCESS):
             "content": content
         }
     ), code.value
+
+
+def read_json():
+    """
+    Read JSON
+    :return: JSON
+    """
+    # Read and return the db.json file
+    try:
+        with open("db.json", "r") as f:
+            return json.load(f)
+    except Exception as e:
+        server_error("Failed to read the database: " + str(e), True)

@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 
 from src.payment.payer import Payer
+from src.utils.utils import read_json
 
 # The route name that we will use in app.py
 route = Blueprint('index', __name__)
@@ -70,3 +71,38 @@ def create_order():
 
     print("OK", flush=True)
     return "OK", 200
+
+
+@route.route('/list', methods=["GET"])
+def admin_display():
+    """
+    Create an order
+    :return:
+    """
+    # Get data from json
+    print("Getting data from json...", end="", flush=True)
+    try:
+        data = read_json()
+    except Exception as e:
+        print("Failed", flush=True)
+        return str(e), 400
+
+    # Calculate summary : list of principals, secondarys, drinks,products
+    summary = {
+        "principals": [],
+        "secondarys": [],
+        "drinks": [],
+        "products": []
+    }
+    for order in data["orders"]:
+        print(order)
+        if order["order"]["order_type"] == "with_form":
+            summary["principals"].append(order["order"]["principal"])
+            summary["secondarys"].append(order["order"]["secondary"])
+            summary["drinks"].append(order["order"]["drink"])
+        elif order["order"]["order_type"] == "no_form":
+            summary["products"].append(order["order"]["no_form_product"])
+
+    print(summary)
+
+    return render_template("admin.html", data=data["orders"], summary=summary)
